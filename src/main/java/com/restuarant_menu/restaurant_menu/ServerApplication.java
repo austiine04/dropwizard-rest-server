@@ -5,6 +5,7 @@ import com.mongodb.Mongo;
 import com.restuarant_menu.restaurant_menu.healthchecks.MongoDBHealthCheck;
 import com.restuarant_menu.restaurant_menu.models.MenuItem;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import com.restuarant_menu.restaurant_menu.resources.MenuItemResource;
@@ -19,7 +20,7 @@ public class ServerApplication extends Application<ServerConfiguration> {
     @Override
     public void initialize(
             Bootstrap<ServerConfiguration> serverConfigurationBootstrap) {
-
+        serverConfigurationBootstrap.addBundle(new AssetsBundle("/assets/", "/"));
     }
 
     @Override
