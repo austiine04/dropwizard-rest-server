@@ -6,9 +6,27 @@
         </head>
 
         <body ng-controller="MenuItemsController">
-            Welcome to the home page.
 
-            {{ menuItems }}
+            <div class="container">
+                <h3>Restaurant Menu.</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr><th>Item</th><th>Description</th><th>Price</th></tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="menuItem in menuItems">
+                            <td>{{ menuItem.name }}</td>
+                            <td>{{ menuItem.description }}</td>
+                            <td>{{ menuItem.price }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+            </div>
 
             <script src="js/lib/angular.min.js"></script>
             <script src="js/lib/bootstrap.min.js"></script>
