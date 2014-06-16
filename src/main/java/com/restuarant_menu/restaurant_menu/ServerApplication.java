@@ -14,13 +14,13 @@ import net.vz.mongodb.jackson.JacksonDBCollection;
 public class ServerApplication extends Application<ServerConfiguration> {
 
     public static void main(String[] args) throws Exception {
-        new ServerApplication().run(new String[]{"server"});
+        new ServerApplication().run(new String[]{ "server" });
     }
 
     @Override
     public void initialize(
             Bootstrap<ServerConfiguration> serverConfigurationBootstrap) {
-        serverConfigurationBootstrap.addBundle(new AssetsBundle("/assets/", "/"));
+        serverConfigurationBootstrap.addBundle(new AssetsBundle("/assets/", "/", "index.html", "assets"));
     }
 
     @Override
@@ -37,6 +37,7 @@ public class ServerApplication extends Application<ServerConfiguration> {
         JacksonDBCollection<MenuItem, String> menuItems = JacksonDBCollection.wrap(
                 db.getCollection("menu_items"), MenuItem.class, String.class);
 
+        environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new MenuItemResource(menuItems));
     }
 }
