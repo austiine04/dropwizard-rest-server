@@ -1,6 +1,7 @@
 package com.restuarant_menu.restaurant_menu.models;
 
 import net.vz.mongodb.jackson.Id;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.List;
 import java.util.UUID;
@@ -10,9 +11,16 @@ public class Order {
     @Id
     private String id = UUID.randomUUID().toString();
 
-    //private List<MenuItem> items;
-    //order has many menu items
+    @NotEmpty
+    private List<MenuItem> items;
 
-    public Order(){
+    public Order(List<MenuItem> items) {
+        this.items = items;
+    }
+
+    public Order(){}
+
+    public double total(){
+        return 0.0;
     }
 }
