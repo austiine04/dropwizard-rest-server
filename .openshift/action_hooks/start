@@ -1,0 +1,5 @@
+#!/bin/bash
+cd $OPENSHIFT_REPO_DIR
+nohup java -jar target/Server-1.0-SNAPSHOT.jar openshift.yml > ${OPENSHIFT_DIY_LOG_DIR}/restaurant_menu.log 2>&1 &
+
+
